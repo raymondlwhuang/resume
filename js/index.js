@@ -1,17 +1,44 @@
-function myDemo (widgetsRequiredID,widgetContainerId){
+function myDemo (contact,summary,skills,widgetsRequiredID,widgetContainerId){
+	this.contact = $('#'+contact);
+	this.summary = $('#'+summary);
+	this.skills = $('#'+skills);
 	this.widgetsRequired = $('#'+widgetsRequiredID);
 	this.widgetContainer = $('#'+widgetContainerId);
 }
-myDemo.prototype.createEmployment = function(summary){
-	summary
+myDemo.prototype.createContact = function(contact){
 	let elementToInsert = `
-		<h2>Raymond Huang </h2>
-		<p>42 Hainsworth Court</p>
-		<p>Markham, Ontario L3S 1T6</p> 
-		<p>Cell Phone 416-904-9826 </p>
-		<p>personal website: http://www.raymondlwhuang.com/ (new build)</p>
-		<p>e-mail:raymondlwhuang@yahoo.com </p>
-	`
+		<h2>${contact.name} </h2>
+		<p>${contact.address}</p>
+		<p>${contact.city}, ${contact.province} ${contact.postalCode}</p> 
+		<p>Phone: ${contact.phone} </p>
+		<p>Personal website: ${contact["personal website"]}</p>
+		<p>e-mail: ${contact["e-mail"]} </p>
+	`;
+	this.contact.append(elementToInsert);
+
+}
+myDemo.prototype.createSummary = function(summary){
+	let elementToInsert = `<ul>`;
+	this.summary.append(elementToInsert);
+	summary.forEach(item=>{
+		elementToInsert = `<li>${item}</li>`;
+		this.summary.append(elementToInsert);
+	});
+	elementToInsert = `</ul>`;
+	this.summary.append(elementToInsert);
+	
+}
+myDemo.prototype.createSkills = function(skills){
+	let elementToInsert = `<ul>`;
+	this.skills.append(elementToInsert);
+	skills.forEach(item=>{
+		elementToInsert = `<li>${item}</li>`;
+		this.skills.append(elementToInsert);
+	});
+	elementToInsert = `</ul>`;
+	this.skills.append(elementToInsert);
+
+
 }
 myDemo.prototype.createEmployment = function(employment){
 	let elementToInsert = `
@@ -57,8 +84,10 @@ myDemo.prototype.createDetail = function(detail){
 	return '<li>'+detail+'</li>';
 }
 myDemo.prototype.create = function(){
-	//resume.summary.forEach(item=>this.createSummary(item));
+	this.createContact(resume.myContact);
+	this.createSummary(resume.summary);
+	this.createSkills(resume.skills);
 	resume.employments.forEach(employment=>this.createEmployment(employment));
 }
-const myDemo1 = new myDemo('widget-needed','widget-container');
+const myDemo1 = new myDemo('contact','summary','skills','widget-needed','widget-container');
 myDemo1.create();

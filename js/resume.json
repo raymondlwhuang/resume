@@ -5,11 +5,11 @@ resume = {
 		city: "Markham",
 		province : "Ontario",
 		postalCode: "L3S 1T6",
-		Phone: "416-904-9826 ",
+		phone: "416-904-9826 ",
 		"personal website" : "http://www.raymondlwhuang.com",
 		"e-mail": "raymondlwhuang@yahoo.com" 
 	},
-	summart : [
+	summary : [
 				"Over 20 years experience in Information Technology (10 years in front end development) that covered all facets of programming",
 				"Proficient in Angular, JavaScript, Typescript, jQuery, HTML CSS",
 				"Extremely high ability on critically analyze complex problems and debugging skill",

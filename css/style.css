@@ -73,5 +73,10 @@ a {
 iframe {
   max-width: 100%; }
 
+
+#contact,#summary,#skills {
+	border: solid 1px;
+	margin: 10px;
+}
 @media all {
 }
