@@ -41,6 +41,12 @@ myDemo.prototype.createSkills = function(skills){
 
 }
 myDemo.prototype.createEmployment = function(employment){
+	let details ="<ul>";
+	employment.detail.responsibilitie.forEach(detail=>{
+		details += this.createDetail(detail);
+	});
+	details += "</ul>";	
+
 	let elementToInsert = `
 				<div class="employment-container">
 					<div>
@@ -54,30 +60,21 @@ myDemo.prototype.createEmployment = function(employment){
 								<p class="location">${ employment.location }</p>
 								<div class="detail">
 									<div class="title">${ employment.detail.title }</div>
-									<ul>
-`							
-this.widgetContainer.append(elementToInsert);
-employment.detail.responsibilitie.forEach(detail=>{
-	elementToInsert = this.createDetail(detail);
-	this.widgetContainer.append(elementToInsert);
-});								
-elementToInsert = `
-					</ul>
-								 </div>
-											
-							</div>    
-						</div>
-						<div class="line">
-							<svg height="5" width="300">
-								<line x1="0" y1="0" x2="300" y2="0" style="stroke:#ccc;stroke-width:2" />
-								Sorry, your browser does not support inline SVG.
-							</svg>
-					
-						</div>
+									${details}
+									 </div>
+								</div>    
+							</div>
+							<div class="line">
+								<svg height="5" width="300">
+									<line x1="0" y1="0" x2="300" y2="0" style="stroke:#ccc;stroke-width:2" />
+									Sorry, your browser does not support inline SVG.
+								</svg>
+						
+							</div>
 
-					</div>
-				</div>		
-		`;
+						</div>
+					</div>		
+			`;
 		this.widgetContainer.append(elementToInsert);
 }
 myDemo.prototype.createDetail = function(detail){
